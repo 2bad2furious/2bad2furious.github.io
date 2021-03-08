@@ -1,0 +1,45 @@
+:host, * {
+  transition: all 0.5s;
+}
+
+.tile {
+  overflow: hidden;
+  height: 12rem;
+  flex-basis: 12rem;
+
+  fa-icon {
+    font-size: 5.7rem;
+  }
+
+  > div {
+    transition: all 0.4s;
+
+    &:not(.horizontal) {
+      flex-direction: column;
+      height: 200%;
+      width: 100%;
+
+      &:hover {
+        transform: translateY(-50%);
+      }
+
+      fa-icon, .text {
+        height: 50%;
+      }
+    }
+
+    &.horizontal {
+      flex-direction: row;
+      width: 200%;
+      height: 100%;
+
+      &:hover {
+        transform: translateX(-50%);
+      }
+
+      fa-icon, .text {
+        width: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+$primary: #8e44ad;
+$success: #27ae60;
+$danger: #c0392b;
+$info: #ecf0f1;
+
+$orange: #f39c12;
+$blue: #3498db;
+$water: #3498db;
+$indigo: #34495e;
+$green: #2ecc71;
+$yellow: #f1c40f;
+$red: #e74c3c;
+$gray: #95a5a6;
+$purple: #8e44ad;
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/variables';
+$theme-colors: map-merge($theme-colors, (
+  'orange': $orange,
+  'red': $red,
+  'yellow': $yellow,
+  'blue': $blue,
+  'green': $green,
+  'gray': $gray,
+  'purple': $purple,
+  'indigo': $indigo,
+  'water': $water
+));
+$h1-font-size: 0.75rem;
+$btn-font-size: 0.6rem;
+@import '~bootstrap/scss/utilities';
