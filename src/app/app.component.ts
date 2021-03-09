@@ -17,7 +17,7 @@ export interface ILink {
 })
 export class AppComponent {
 
-  static className = 'animate__jackInTheBox';
+  static className = 'animate__flipInX';
   @HostBinding() readonly class = 'd-flex flex-column w-100 min-vh-100';
   readonly links: ILink[][] = [
     // {icon: faTwitter, link: 'https://twitter.com/2bad2furious', classes: 'twitter', text: 'Dog stuff'},

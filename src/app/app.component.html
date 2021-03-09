@@ -3,7 +3,7 @@
      [class.text-light]="isDark" [class.text-dark]="!isDark"
      #switcher style="z-index: 2">
   <h1 class="mb-0 fw-bolder fst-italic">2bad2furious</h1>
-  <button class="btn rounded-0 animate__animated animate__faster" [class.btn-outline-dark]="!isDark"
+  <button class="btn rounded-0 animate__animated " [class.btn-outline-dark]="!isDark"
           [class.btn-outline-light]="isDark"
           #button (click)="switch(button)">
     {{isDark ? 'Light' : 'Dark'}} theme

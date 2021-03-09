@@ -2,6 +2,31 @@
   transition: all 0.5s;
 }
 
+@mixin container($horizontal) {
+  $axis1: width;
+  $axis2: height;
+  $direction: column;
+  $translate: translateY;
+  @if $horizontal {
+    $axis1: height;
+    $axis2: width;
+    $direction: row;
+    $translate: translateX;
+  }
+  flex-direction: #{$direction};
+  #{$axis1}: 100%;
+  #{$axis2}: 200%;
+
+  &:hover {
+    transform: #{$translate}(-50%);
+  }
+
+  fa-icon, .text {
+    #{$axis2}: 50%;
+  }
+}
+
+
 .tile {
   overflow: hidden;
   height: 14rem;
@@ -15,31 +40,11 @@
     transition: all 0.4s;
 
     &:not(.horizontal) {
-      flex-direction: column;
-      height: 200%;
-      width: 100%;
-
-      &:hover {
-        transform: translateY(-50%);
-      }
-
-      fa-icon, .text {
-        height: 50%;
-      }
+      @include container(false);
     }
 
     &.horizontal {
-      flex-direction: row;
-      width: 200%;
-      height: 100%;
-
-      &:hover {
-        transform: translateX(-50%);
-      }
-
-      fa-icon, .text {
-        width: 50%;
-      }
+      @include container(true);
     }
   }
 }
