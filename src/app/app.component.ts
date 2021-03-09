@@ -30,7 +30,6 @@ export class AppComponent {
     [{icon: faInstagram, link: 'https://www.instagram.com/2qte2fabulous/', text: 'Watch me get ripped'},
       {icon: faLinkedin, link: 'https://www.linkedin.com/in/martin-macura-41442013b/', text: 'Watch me get professional'}]
   ];
-  hasNavBorder!: boolean;
   private browserDark = true;
   private customScheme?: boolean;
   private timeout?: ReturnType<typeof setTimeout>;
@@ -39,10 +38,6 @@ export class AppComponent {
     const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
     this.browserDark = isDarkTheme.matches;
     isDarkTheme.addEventListener('change', e => this.browserDark = e.matches);
-
-    const hasNavBorder = window.matchMedia('(min-width: 992px)');
-    this.hasNavBorder = !hasNavBorder.matches;
-    hasNavBorder.addEventListener('change', e => this.hasNavBorder = !e.matches);
   }
 
   @HostBinding('class.bg-dark') get isDark(): boolean {
