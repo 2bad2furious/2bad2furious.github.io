@@ -3,16 +3,11 @@
 }
 
 @mixin container($horizontal) {
-  $axis1: width;
-  $axis2: height;
-  $direction: column;
-  $translate: translateY;
-  @if $horizontal {
-    $axis1: height;
-    $axis2: width;
-    $direction: row;
-    $translate: translateX;
-  }
+  $axis1: if($horizontal, height, width);
+  $axis2: if($horizontal, width, height);
+  $direction: if($horizontal, row, column);
+  $translate: if($horizontal, translateX, translateY);
+
   flex-direction: #{$direction};
   #{$axis1}: 100%;
   #{$axis2}: 200%;
