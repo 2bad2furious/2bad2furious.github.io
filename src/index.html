@@ -5,7 +5,11 @@
   <title>Martin Macura</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    if (window.location.pathname.length > 1) {
+      window.location.pathname = '/';
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>
