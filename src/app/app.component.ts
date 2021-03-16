@@ -17,21 +17,20 @@ export interface ILink {
 })
 export class AppComponent {
 
-  static className = 'animate__flipInX';
+  static className = 'flipInX';
   @HostBinding() readonly class = 'd-flex flex-column w-100 min-vh-100';
   readonly links: ILink[][] = [
-    // {icon: faTwitter, link: 'https://twitter.com/2bad2furious', classes: 'twitter', text: 'Dog stuff'},
     [{
       icon: faMediumM,
       link: 'https://2bad2furious.medium.com/',
-      classes: 'medium',
       text: 'I sometimes get the urge to write about something I found either cool or weird'
-    }, {icon: faGithub, link: 'https://github.com/2bad2furious', text: 'I do sometimes build stuff'}],
+    },
+      {icon: faGithub, link: 'https://github.com/2bad2furious', text: 'Watch me try to center a div'}],
     [{icon: faInstagram, link: 'https://www.instagram.com/2qte2fabulous/', text: 'Watch me get ripped'},
       {icon: faLinkedin, link: 'https://www.linkedin.com/in/martin-macura-41442013b/', text: 'Watch me get professional'}]
   ];
   private browserDark = true;
-  private customScheme?: boolean;
+  private customSchemeDark?: boolean;
   private timeout?: ReturnType<typeof setTimeout>;
 
   constructor() {
@@ -41,22 +40,18 @@ export class AppComponent {
   }
 
   @HostBinding('class.bg-dark') get isDark(): boolean {
-    return this.customScheme ?? this.browserDark;
+    return this.customSchemeDark ?? this.browserDark;
   }
 
   @HostBinding('class.bg-light') get isLight(): boolean {
     return !this.isDark;
   }
 
-  private static resetAnimationClass(el: HTMLElement): void {
-    el.classList.remove(AppComponent.className);
-  }
-
   switch(switcher: HTMLElement): void {
     clearTimeout(this.timeout);
     switcher.classList.remove(AppComponent.className);
     setTimeout(() => switcher.classList.add(AppComponent.className));
-    this.customScheme = !this.isDark;
-    this.timeout = setTimeout(() => AppComponent.resetAnimationClass(switcher), 1000);
+    this.customSchemeDark = !this.isDark;
+    this.timeout = setTimeout(() => switcher.classList.remove(AppComponent.className), 1000);
   }
 }

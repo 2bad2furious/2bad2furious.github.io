@@ -1,21 +1,21 @@
-<nav class="position-fixed w-100 p-2 d-flex justify-content-between align-items-center" [class.bg-light]="!isDark"
+<nav [class.bg-light]="isLight" [class.text-dark]="isLight"
      [class.bg-dark]="isDark"
-     [class.text-light]="isDark" [class.text-dark]="!isDark"
+     [class.text-light]="isDark" class="position-fixed w-100 p-2 d-flex justify-content-between align-items-center"
      #switcher style="z-index: 2">
-  <h1 class="mb-0 fw-bolder fst-italic">2bad2furious</h1>
-  <button class="btn rounded-0 animate__animated " [class.btn-outline-dark]="!isDark"
+  <h1 class="mb-0 fw-bolder fst-italic">Martin Macura</h1>
+  <button [class.btn-outline-dark]="isLight" class="btn rounded-0 animated "
           [class.btn-outline-light]="isDark"
           #button (click)="switch(button)">
     {{isDark ? 'Light' : 'Dark'}} theme
   </button>
 </nav>
 <div [ngStyle]="{'margin-top.px': switcher.clientHeight}"
-     class="d-flex flex-column flex-wrap justify-content-center flex-grow-1 align-items-stretch align-items-lg-center">
+     class="d-flex flex-column flex-wrap justify-content-center flex-grow-1 align-items-stretch align-items-sm-center">
   <div *ngFor="let row of links; let i = index"
-       class="d-flex justify-content-center flex-lg-row flex-column align-items-stretch align-items-lg-center">
+       class="d-flex justify-content-center flex-sm-row flex-column align-items-stretch align-items-sm-center">
     <a *ngFor="let link of row; let i2 = index" [href]="link.link" target="_blank"
-       class="text-decoration-none tile border m-2">
-      <div class="d-flex horizontal" [class.text-light]="isDark" [class.text-dark]="!isDark"
+       [class.border-dark]="isLight" class="text-decoration-none tile m-2 border">
+      <div [class.text-dark]="isLight" [class.text-light]="isDark" class="d-flex horizontal"
            [class.horizontal]="(i + i2) % 2 === 0">
         <fa-icon [icon]="link.icon"
                  class="position-relative d-flex justify-content-center align-items-center"></fa-icon>
