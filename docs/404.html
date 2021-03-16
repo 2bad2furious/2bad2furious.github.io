@@ -7,7 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
     if (window.location.pathname.length > 1) {
-      window.location.pathname = '/';
+      window.history && window.history.replaceState && window.history.replaceState('', document.title, '/');
+      if (window.location.pathname.length > 1) { // fallback for older browsers
+        window.location.pathname = '/';
+      }
     }
   </script>
 <link rel="stylesheet" href="styles.1a6eb3f45d2a76454a94.css"></head>
