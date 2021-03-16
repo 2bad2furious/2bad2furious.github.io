@@ -3,14 +3,13 @@
      [class.text-light]="isDark" class="position-fixed w-100 p-2 d-flex justify-content-between align-items-center"
      #switcher style="z-index: 2">
   <h1 class="mb-0 fw-bolder fst-italic">Martin Macura</h1>
-  <button [class.btn-outline-dark]="isLight" class="btn rounded-0 animated "
-          [class.btn-outline-light]="isDark"
-          #button (click)="switch(button)">
+  <button (click)="switch()" [class.btn-outline-dark]="isLight"
+          [class.btn-outline-light]="isDark" class="btn rounded-0">
     {{isDark ? 'Light' : 'Dark'}} theme
   </button>
 </nav>
 <div [ngStyle]="{'margin-top.px': switcher.clientHeight}"
-     class="d-flex flex-column flex-wrap justify-content-center flex-grow-1 align-items-stretch align-items-sm-center">
+     class="d-flex flex-column flex-nowrap flex-sm-wrap justify-content-center flex-grow-1 align-items-stretch align-items-sm-center">
   <div *ngFor="let row of links; let i = index"
        class="d-flex justify-content-center flex-sm-row flex-column align-items-stretch align-items-sm-center">
     <a *ngFor="let link of row; let i2 = index" [href]="link.link" target="_blank"

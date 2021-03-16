@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, HostListener} from '@angular/core';
 import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faInstagram, faLinkedin, faMediumM} from '@fortawesome/free-brands-svg-icons';
 
@@ -17,7 +17,6 @@ export interface ILink {
 })
 export class AppComponent {
 
-  static className = 'flipInX';
   @HostBinding() readonly class = 'd-flex flex-column w-100 min-vh-100';
   readonly links: ILink[][] = [
     [{
@@ -31,7 +30,6 @@ export class AppComponent {
   ];
   private browserDark = true;
   private customSchemeDark?: boolean;
-  private timeout?: ReturnType<typeof setTimeout>;
 
   constructor() {
     const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -47,11 +45,11 @@ export class AppComponent {
     return !this.isDark;
   }
 
-  switch(switcher: HTMLElement): void {
-    clearTimeout(this.timeout);
-    switcher.classList.remove(AppComponent.className);
-    setTimeout(() => switcher.classList.add(AppComponent.className));
+  switch(): void {
     this.customSchemeDark = !this.isDark;
-    this.timeout = setTimeout(() => switcher.classList.remove(AppComponent.className), 1000);
+  }
+
+  @HostListener('window:resize') resized(): void {
+    // no need to do anything, I just needed to force the redraw
   }
 }
