@@ -17,7 +17,6 @@ export interface ILink {
 })
 export class AppComponent {
 
-  @HostBinding() readonly class = 'd-flex flex-column w-100 min-vh-100';
   readonly links: ILink[][] = [
     [{
       icon: faMediumM,
