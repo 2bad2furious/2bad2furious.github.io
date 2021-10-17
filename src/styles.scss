@@ -37,3 +37,7 @@
 // @import '~bootstrap/scss/_transitions.scss';
 
 @import "~bootstrap/scss/utilities/api";
+
+body.inactive * {
+  color: #{$light};
+}

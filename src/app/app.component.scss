@@ -31,7 +31,7 @@
     font-size: 5.7rem;
   }
 
-  > div {
+  .slide-container {
     transition: all 0.4s;
 
     &:not(.horizontal) {
@@ -42,4 +42,9 @@
       @include container(true);
     }
   }
+}
+
+#switcher {
+  width: 2.5rem;
+  height: 2.5rem;
 }

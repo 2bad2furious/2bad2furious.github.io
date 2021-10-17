@@ -1,27 +1,34 @@
-<nav [class.bg-light]="isLight" [class.text-dark]="isLight"
-     [class.bg-dark]="isDark"
-     [class.text-light]="isDark" class="position-fixed w-100 p-2 d-flex justify-content-between align-items-center"
-     #switcher style="z-index: 2">
-  <h1 class="mb-0 fw-bolder fst-italic">Martin Macura</h1>
-  <button (click)="switch()" [class.btn-outline-dark]="isLight"
-          [class.btn-outline-light]="isDark" class="btn rounded-0">
-    {{isDark ? 'Light' : 'Dark'}} theme
-  </button>
-</nav>
-<div [ngStyle]="{'margin-top.px': switcher.clientHeight}"
-     class="d-flex flex-column flex-nowrap flex-sm-wrap justify-content-center flex-grow-1 align-items-stretch align-items-sm-center">
-  <div *ngFor="let row of links; let i = index"
-       class="d-flex justify-content-center flex-sm-row flex-column align-items-stretch align-items-sm-center">
-    <a *ngFor="let link of row; let i2 = index" [href]="link.link" target="_blank"
-       [class.border-dark]="isLight" class="text-decoration-none tile m-2 border">
-      <div [class.text-dark]="isLight" [class.text-light]="isDark" class="d-flex horizontal"
-           [class.horizontal]="(i + i2) % 2 === 0">
-        <fa-icon [icon]="link.icon"
-                 class="position-relative d-flex justify-content-center align-items-center"></fa-icon>
-        <div class="text align-self-stretch d-flex justify-content-center align-items-center p-5">
-          {{link.text}}
-        </div>
+<ng-container *ngIf="(schemeObservable | async)! as scheme">
+  <nav [ngClass]="['bg-' + scheme.color, 'text-' + scheme.invertedColor ]"
+       class="position-fixed w-100 p-2 d-flex justify-content-between align-items-center"
+       #switcher style="z-index: 2">
+    <h1 class="mb-0 fw-bolder fst-italic align-self-start">Martin Macura</h1>
+    <button (click)="switch()" [ngClass]="'btn-outline-' + scheme.invertedColor" class="btn rounded-circle" id="switcher" [class.border-0]="scheme.isDark">
+      <fa-icon [icon]="scheme.switcherIcon"></fa-icon>
+    </button>
+  </nav>
+  <div [ngStyle]="{'margin-top.px': switcher.clientHeight}"
+       class="d-flex flex-column flex-nowrap flex-sm-wrap justify-content-center flex-grow-1 align-items-stretch align-items-sm-center">
+    <div *ngFor="let row of links; let i = index"
+         class="d-flex justify-content-center flex-sm-row flex-column align-items-stretch align-items-sm-center">
+
+      <div *ngFor="let link of row; let i2 = index" [class.border-dark]="scheme.isLight"
+           class="border rounded-circle tile m-2">
+        <a [href]="link.link" target="_blank" class="text-decoration-none">
+          <div [ngClass]="'text-' + scheme.invertedColor" class="d-flex horizontal  slide-container"
+               [class.horizontal]="(i + i2) % 2 === 0">
+            <fa-icon [icon]="link.icon"
+                     class="position-relative d-flex justify-content-center align-items-center"></fa-icon>
+            <div class="text align-self-stretch d-flex justify-content-center align-items-center p-5">
+              {{link.text}}
+            </div>
+          </div>
+        </a>
       </div>
-    </a>
+    </div>
   </div>
-</div>
+  <footer [ngClass]="'text-' + scheme.invertedColor"
+          class="d-flex justify-content-center align-items-center p-1">
+    © Martin Macura 2021
+  </footer>
+</ng-container>
