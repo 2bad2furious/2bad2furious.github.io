@@ -1,19 +1,20 @@
 import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import {faMoon, faSun, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {faGithub, faInstagram, faLinkedin, faMediumM} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faInstagram, faLinkedin, faMediumM, IconLookup} from '@fortawesome/free-brands-svg-icons';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 
 export interface IScheme {
   isDark: boolean;
   isLight: boolean;
   color: 'light' | 'dark';
   invertedColor: 'light' | 'dark';
-  switcherIcon: IconDefinition;
+  switcherIcon: IconProp;
 }
 
 export interface ILink {
-  icon: IconDefinition;
+  icon: IconProp;
   link: string;
   classes?: string;
   text: string;
@@ -31,26 +32,25 @@ export class AppComponent implements OnInit {
     isLight: false,
     color: 'dark',
     invertedColor: 'light',
-    switcherIcon: faSun
+    switcherIcon: faSun as IconProp
   };
   static readonly lightScheme: IScheme = {
     isDark: false,
     isLight: true,
     color: 'light',
     invertedColor: 'dark',
-    switcherIcon: faMoon
+    switcherIcon: faMoon as IconProp
   };
   static readonly LOCAL_STORAGE_KEY = 'scheme';
 
-  readonly links: ILink[][] = [
-    [{
-      icon: faMediumM,
+  readonly links: ILink[] = [
+    {
+      icon: faMediumM as IconProp,
       link: 'https://2bad2furious.medium.com/',
       text: 'I sometimes get the urge to write about something I found either cool or weird'
     },
-      {icon: faGithub, link: 'https://github.com/2bad2furious', text: 'Watch me try to center a div'}],
-    [{icon: faInstagram, link: 'https://www.instagram.com/2qte2fabulous/', text: 'Watch me get ripped'},
-      {icon: faLinkedin, link: 'https://www.linkedin.com/in/martin-macura-41442013b/', text: 'Watch me get professional'}]
+      {icon: faGithub as IconProp, link: 'https://github.com/2bad2furious', text: 'Watch me try to center a div'},
+      {icon: faLinkedin as IconProp, link: 'https://www.linkedin.com/in/martin-macura-41442013b/', text: 'Watch me get professional'}
   ];
 
   private readonly localStorageSubject = new BehaviorSubject<'light' | 'dark' | null>(null);
@@ -66,6 +66,8 @@ export class AppComponent implements OnInit {
   constructor(
     private readonly e: ElementRef<HTMLElement>
   ) {
+    console.debug(faSun);
+
     const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (isDarkTheme.matches || window.matchMedia('(prefers-color-scheme: light)')) {
       this.systemPreferenceSubject.next(isDarkTheme.matches ? 'dark' : 'light');
