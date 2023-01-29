@@ -27,7 +27,7 @@ export const Footer: FC = () => {
         <PageContainer>
             <Flex justify={"end"} gap={"sm"} py={"sm"}>
                 {links.map((link, i) => (
-                    <Link key={i} href={link.href} title={link.title}>
+                    <Link key={i} href={link.href} title={link.title} target={"_blank"}>
                         <ActionIcon variant={"outline"} size={"xl"}>
                             <link.icon></link.icon>
                         </ActionIcon>
