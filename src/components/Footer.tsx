@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {ActionIcon, Flex, Footer as MantineFooter} from "@mantine/core";
-import {IconBrandGithub, IconBrandMedium, IconBrandTwitter} from "@tabler/icons-react";
+import {IconBrandGithub, IconBrandLinkedin, IconBrandMedium, IconBrandTwitter} from "@tabler/icons-react";
 import {PageContainer} from "@/components/PageContainer";
 import Link from "next/link";
 
@@ -19,6 +19,11 @@ const links = [
         icon: IconBrandTwitter,
         title: "2bad2furious@twitter",
         href: "https://twitter.com/2bad2furious"
+    },
+    {
+        icon: IconBrandLinkedin,
+        title: "Martin Macura@linkedin",
+        href: "https://www.linkedin.com/in/martin-macura-41442013b/"
     }
 ]
 
