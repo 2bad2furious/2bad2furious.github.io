@@ -1,6 +1,5 @@
 import React, {FC, PropsWithChildren} from "react";
-import {ActionIcon, Affix, AppShell, useMantineColorScheme} from "@mantine/core";
-import {IconMoon, IconSun} from '@tabler/icons-react';
+import {AppShell} from "@mantine/core";
 import {Header} from "@/components/Header";
 import {Footer} from "@/components/Footer";
 

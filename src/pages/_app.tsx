@@ -10,7 +10,9 @@ export default function App({Component, pageProps}: AppProps) {
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
         key: 'mantine-color-scheme',
     });
+
     const actualColorScheme = colorScheme || preferredColorScheme;
+    console.debug({preferredColorScheme, colorScheme, actualColorScheme})
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
