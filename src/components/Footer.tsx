@@ -1,10 +1,15 @@
 import {FC} from "react";
 import {ActionIcon, Flex, Footer as MantineFooter} from "@mantine/core";
-import {IconBrandGithub, IconBrandLinkedin, IconBrandMedium, IconBrandTwitter} from "@tabler/icons-react";
+import {IconBrandGithub, IconBrandLinkedin, IconBrandMedium, IconBrandTwitter, IconCode} from "@tabler/icons-react";
 import {PageContainer} from "@/components/PageContainer";
 import Link from "next/link";
 
 const links = [
+    {
+        icon: IconCode,
+        title: "2bad2furious.github.io",
+        href: "https://github.com/2bad2furious/2bad2furious.github.io"
+    },
     {
         icon: IconBrandGithub,
         title: "2bad2furious@github",
