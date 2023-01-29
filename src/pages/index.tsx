@@ -48,7 +48,7 @@ export default function Home() {
     return (
         <>
             <PageContainer>
-                <Section spacing={0} align={"stretch"}
+                <Section spacing={0} align={"stretch"} contentPl={0}
                          header={<Title align={"center"} size={"xxx-large"}
                                         mt={"lg"} mb={"sm"} order={1}>Martin Macura</Title>}>
                     <Flex gap={"md"} justify={"center"}>
