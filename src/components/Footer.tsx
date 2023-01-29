@@ -33,7 +33,7 @@ const links = [
 ]
 
 export const Footer: FC = () => {
-    return <MantineFooter height={70}>
+    return <MantineFooter height={"auto"}>
         <PageContainer>
             <Flex justify={"end"} gap={"sm"} py={"sm"}>
                 {links.map((link, i) => (

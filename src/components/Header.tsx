@@ -12,9 +12,9 @@ const items = [
 
 export const Header: FC = () => {
     const {colorScheme, toggleColorScheme} = useMantineColorScheme();
+
     const dark = colorScheme === "dark";
-    // TODO get rid of fixed height, "auto" works fine, but content is not visible
-    return <MantineHeader height={70}>
+    return <MantineHeader height={"auto"}>
         <PageContainer>
             <Flex py={"xs"} justify={"end"} align={"center"} gap={"sm"}>
                 <Menu>
