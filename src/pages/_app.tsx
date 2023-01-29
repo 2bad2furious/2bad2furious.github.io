@@ -1,26 +1,26 @@
 import type {AppProps} from 'next/app'
 import React from "react";
 import {ColorScheme, ColorSchemeProvider, MantineProvider} from "@mantine/core";
-import {useHotkeys, useLocalStorage} from "@mantine/hooks";
+import {useColorScheme, useHotkeys, useLocalStorage} from "@mantine/hooks";
 import {Layout} from "@/components/Layout";
 import {mantineTheme} from "../../mantine.config";
 
-
 export default function App({Component, pageProps}: AppProps) {
+    const preferredColorScheme = useColorScheme();
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
-        getInitialValueInEffect: true,
     });
+    const actualColorScheme = colorScheme || preferredColorScheme;
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
-    const toggleColorScheme = (value?: ColorScheme) => setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
-    return (<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+    const toggleColorScheme = (value?: ColorScheme) => setColorScheme(value || (actualColorScheme === 'dark' ? 'light' : 'dark'));
+
+    return (<ColorSchemeProvider colorScheme={actualColorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
             withGlobalStyles
             withNormalizeCSS
-            theme={{...mantineTheme, colorScheme: colorScheme}}>
+            theme={{...mantineTheme, colorScheme: actualColorScheme}}>
             <Layout>
                 <Component {...pageProps} />
             </Layout>
