@@ -12,7 +12,6 @@ export default function App({Component, pageProps}: AppProps) {
     });
 
     const actualColorScheme = colorScheme || preferredColorScheme;
-    console.debug({preferredColorScheme, colorScheme, actualColorScheme})
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
