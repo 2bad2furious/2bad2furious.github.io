@@ -17,6 +17,7 @@ import {IconMoodSmile, IconMoodSmileDizzy} from "@tabler/icons-react";
 import {MantineNumberSize} from "@mantine/styles";
 import {Property} from "csstype";
 import AlignItems = Property.AlignItems;
+import {useDocumentTitle} from "@mantine/hooks";
 
 type SectionProps = PropsWithChildren<{ header?: ReactElement, size?: MantineNumberSize, spacing?: MantineNumberSize, align?: AlignItems, contentPl?: MantineNumberSize }>
 const Section: FC<SectionProps> = (
@@ -41,6 +42,8 @@ const Section: FC<SectionProps> = (
 const plansText = "I'd like to continue teaching up-and-coming programmers, build tools to simplify teaching for others and continue learning and coming up with new approaches."
 
 export default function Home() {
+    useDocumentTitle("Martin Macura");
+
     const theme = useMantineTheme();
     return (
         <>
