@@ -59,14 +59,14 @@ export default function Home() {
                 </Section>
                 <Divider my={"lg"}></Divider>
                 <Section header={<Title order={2}>Technologies</Title>}>
-                    <List icon={<ThemeIcon color="teal" size={"md"} radius="xl">
-                        <IconMoodSmileDizzy size={20}/>
-                    </ThemeIcon>}>
+                    <List icon={<ThemeIcon color="teal" size={"xl"} radius="xl" >
+                        <IconMoodSmileDizzy size={40}/>
+                    </ThemeIcon>} styles={{itemWrapper: {alignItems: "center!important"}, itemIcon: {"lineHeight": 1}}}>
                         <List.Item>Kotlin, Java, Spring</List.Item>
-                        <List.Item>JavaScript, Typescript, Angular</List.Item>
+                        <List.Item >JavaScript, Typescript, Angular</List.Item>
                         <List.Item>MySQL, MariaDB</List.Item>
-                        <List.Item icon={<ThemeIcon color={"cyan"} size={"md"} radius="xl"><IconMoodSmile
-                            size={20}/></ThemeIcon>}>React, Next, TRPC</List.Item>
+                        <List.Item icon={<ThemeIcon color={"cyan"} size={"xl"} radius="xl"><IconMoodSmile
+                            size={40}/></ThemeIcon>}>React, Next, TRPC</List.Item>
                     </List>
                 </Section>
                 <Divider my={"lg"}/>
